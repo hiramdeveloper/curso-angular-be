@@ -48,6 +48,18 @@ app.post('/api/users', (req, res) => {
     res.send(user);
 });
 
+app.post('/api/customers', (req, res) => {
+    console.log(req.body);
+    const customer = {
+        id: customers.length + 1,
+        name: req.body.name,
+        age: req.body.age,
+        ocupation: req.body.ocupation
+    };
+    customers.push(customer);
+    res.send(customer);
+});
+
 app.delete('/api/users/:id', (req, res) => {
     const user = users.find(u => u.id === parseInt(req.params.id));
     if (!user) {
